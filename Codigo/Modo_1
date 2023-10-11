@@ -1,1 +1,28 @@
 
+
+void lluviaFila(void) {
+  int fila = 0;
+  for (int i = 0; i < 16; i++) {
+    while (fila == 0) {
+      fila = random(16);
+    }
+    if (fila == 1 || fila == 3 || fila == 5 || fila == 7 || fila == 9 || fila == 11 || fila == 13 || fila == 15) {
+      for (int i = fila * 16 - 1; i > fila * 16 - 17; i--) {
+        pixels.setPixelColor(i, pixels.Color(64, 64, 64));
+        pixels.show();
+        pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+        pixels.show();
+      }
+    } else {
+      int primerLed = (fila * 16) - 16;
+      int ultimoLed = fila * 16;
+      for (int i = primerLed; i < ultimoLed; i++) {
+        pixels.setPixelColor(i, pixels.Color(64, 64, 64));
+        pixels.show();
+        pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+        pixels.show();
+      }
+    }
+    fila = random(16);
+  }
+}
